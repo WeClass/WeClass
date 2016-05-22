@@ -1,0 +1,134 @@
+body {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+}
+.header {
+	display: -webkit-box;
+}
+
+.title {
+    -webkit-box-flex: 1;
+	color: #FFFFFF;
+	text-align: left;
+	line-height: 50px;
+	font-size: 18px;
+	padding-top: 15px;
+}
+/**头部 **/
+.detail-header {
+	border-bottom: 1px solid #CDCDCD;
+	background-color: #10B6F2;
+}
+.back {
+	background-size: 40px !important;
+	background-image: url("../../image/sidepage/login/weather_back@2x.png");
+	background-position: right !important;
+	background-repeat: no-repeat;
+	margin-top: 15px;
+}
+.login-header-btn {
+	color: #FFFFFF;
+	display: block;
+	background-size: 30px;
+	margin-top: 10px;
+	padding: 20px;
+}
+
+/**头部 **/
+/**中部**/
+.content {
+	-webkit-box-flex: 1;
+}
+
+.form {
+	margin: 20px;
+}
+.input-wrap {
+	padding: 10px 0;
+	display: -webkit-box;
+	border-bottom: 1px solid #d4d4d4;
+}
+i {
+	display: block;
+	width: 30px;
+	height: 30px;
+	background-size: 30px;
+	background-repeat: no-repeat no-repeat;
+	background-position: center;
+}
+.user {
+	background-image: url("../../image/state/ic_phone.png");
+	background-size: 25px;
+}
+.password {
+	background-image: url("../../image/state/ic_password.png");
+	background-size: 25px;
+}
+.input-wrap input {
+	display: block;
+	-webkit-box-flex: 1;
+	background-color: rgba(255, 255, 255, 0);
+	outline: none;
+	height: 32px;
+}
+.form {
+	background-color: rgba(255, 255, 255, 0.8);
+	margin: 20px;
+	padding: 10px 10px;
+	border-radius: 8px;
+}
+
+.loginTip {
+	text-align: right;
+	padding-bottom: 20px;
+	padding-right: 30px;
+}
+.loginTip a {
+	text-decoration: underline;
+	color: #bfbfbf;
+	font-size: 15px;
+	font-family: '微软雅黑';
+}
+.btn {
+
+	margin: 0 28px;
+	text-align: center;
+	-webkit-border-radius: 8px;
+	height: 40px;
+	line-height: 40px;
+	background-color: #FD5554;
+	border: 1px solid #ffffff;
+	border-radius: 8px;
+	color: #ffffff!important;;
+}
+
+input {
+	padding-left: 12px;
+	font-size: 16px;
+}
+.getcode {
+	padding: 5px;
+	font-size: 15px;
+	background: #ffffff;
+	color: #2D94DA !important;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #2D94DA;
+}
+/*删除*/
+.del {
+
+	border-radius: 18px;
+	background: #e6e6e6 url("../../image/state/del.png") no-repeat center;
+	background-size: 10px;
+	visibility:hidden;
+	width: 18px;
+	height: 18px;
+	margin-top: 5px;
+}
+.show{
+    visibility:visible;
+}
+.light{
+    border-color: #55abce;
+}

@@ -1,0 +1,253 @@
+
+var videoPlayer;
+var videotime = 0;
+//当前视频总时间
+var isplaying = 1;
+
+//判断是暂停还是播放状态0为正在播放
+apiready = function() {
+	//////////////////////////////////////////////////////////////////////
+	getvideoData();
+	videoPlayer = api.require('videoPlayer');
+	//打开一个视频播放器
+	videoPlayer.open({
+		//（可选项）文档的路径，支持网络和本地（fs://）路径，在 android 平台上不支持 widget
+		path : 'http://222.21.218.207/7o50kb.com2.z0.glb.qiniucdn.com/c1.1.mp4',
+		//视频（可选项）模块的位置及尺寸
+		rect : {
+			x : 0, //（可选项）数字类型；模块左上角的 x 坐标（相对于所属的 Window 或 Frame）；默认：0
+			y : 0, //（可选项）数字类型；模块左上角的 y 坐标（相对于所属的 Window 或 Frame）；默认：0
+			w : api.frameWidth, //（可选项）数字类型；模块的宽度；默认：所属的 Window 或 Frame 的宽度
+			h : 200 //（可选项）数字类型；模块的高度；默认：w的3/4
+		},
+		//（可选项）打开时是否自动播放
+		autoPlay : false,
+		/*
+		 fixedOn：
+		 类型：字符串类型
+		 描述：（可选项）模块视图添加到指定 frame 的名字（只指 frame，传 window 无效）
+		 默认：模块依附于当前 window
+		 */
+		fixedOn : 'main',
+		/*
+		coverImg：
+		类型：布尔
+		描述：（可选项）封面图路径，播放器打开尚未播放时的封面图，要求本地路径（widget://、fs://）
+		* */
+		//coverImg : true,
+		/*
+		 fixed：
+		 类型：布尔
+		 描述：（可选项）模块是否随所属 Window 或 Frame 滚动
+		 默认值：true（不随之滚动）
+		 *
+		 *  */
+		fixed : false
+	}, function(ret, err) {
+		if (ret.status) {
+			var time = ret.duration;
+			videotime = parseInt(time);
+			$("#inline-range").attr("max", videotime);
+			console.log(changestom(videotime));
+			document.getElementById("alltime").innerHTML = changestom(videotime);
+			addplaytimeevent();
+			//快进的监听
+		} else {
+			alert(JSON.stringify(err));
+		}
+	});
+};
+//拖动进度的状态的改变
+var rangeList = document.querySelectorAll('input[type="range"]');
+//得到进度条
+for (var i = 0, len = rangeList.length; i < len; i++) {
+	//添加监听时间
+	rangeList[i].addEventListener('input', function() {
+		//
+		if (this.id.indexOf('field') >= 0) {
+			console.log(this.value + "--");
+		} else {
+			//当拖动进度等于总时间的时候 停止播放
+			if (this.value == videotime) {
+				videoPlayer.stop();
+			}
+			//当拖动进度不等于总时间的时候
+			else {
+				videoPlayer.start();
+				//开始播放
+				//设置视频跳转
+				videoPlayer.seekTo({
+					seconds : this.value //转到音视频播放的秒数
+				});
+				document.getElementById("nowtime").innerHTML = changestom(this.value);
+				var el = document.getElementById("inline-range");
+				//得到进度条
+				//拖动的时候 进度时间也要改
+				progressvalue = this.value;
+				$api.val(el, this.value);
+				console.log(this.value + "++");
+			}
+		}
+	});
+}
+//显示全屏
+function showquanping() {
+	//全屏播放的时候 秒数暂时不走了 播放暂停 并记录播放的当前时间
+	ispause = 0;
+	videoPlayer.pause();
+	var videoPlayera = api.require('videoPlayer');
+	videoPlayera.play({
+		texts : {
+			head : {//（可选项）JSON 类型；设置顶部文字
+				title : '返回' //（可选项）字符串类型；顶部标题文字；默认：''
+			}
+		},
+		styles : {
+			head : {//（可选项）JSON对象；播放器顶部导航条样式
+				bg : 'rgba(0.5,0.5,0.5,0.7)', //（可选项）字符串类型；顶部导航条背景，支持#、rgb、rgba、img；默认：rgba(0.5,0.5,0.5,0.7)
+				height : 28, //（可选项）数字类型；顶部导航条的高；默认：44
+				titleSize : 20, //（可选项）数字类型；顶部标题字体大小；默认：20
+				titleColor : '#fff', //（可选项）字符串类型；顶部标题字体颜色；默认：#fff
+				backSize : 44, //（可选项）数字类型；顶部返回按钮大小；默认：44
+				backImg : 'fs://img/back.png', //（可选项）字符串类型；顶部返回按钮的背景图片，要求本地路径（widget://、fs://）；默认：返回小箭头图标
+				setSize : 44, //（可选项）数字类型；顶部右边设置按钮大小；默认：44
+				setImg : 'fs://img/set.png' //（可选项）字符串类型；顶部右边设置按钮背景图片，要求本地路径（widget://、fs://）；默认：设置小图标
+			},
+			foot : {//（可选项）JSON对象；播放器底部导航条样式
+				bg : 'rgba(0.5,0.5,0.5,0.7)', //（可选项）字符串类型；底部导航条背景，支持#、rgb、rgba、img；默认：rgba(0.5,0.5,0.5,0.7)
+				height : 28, //（可选项）数字类型；底部导航条的高；默认：44
+				playSize : 44, //（可选项）数字类型；底部播放/暂停按钮大小；默认：44
+				playImg : 'fs://img/back.png', //（可选项）字符串类型；底部播放按钮的背景图片，要求本地路径（widget://、fs://）；默认：播放按钮图标
+				pauseImg : 'fs://img/back.png', //（可选项）字符串类型；底部暂停按钮的背景图片，要求本地路径（widget://、fs://）；默认：暂停按钮图标
+				nextSize : 44, //（可选项）数字类型；底部下一集按钮大小；默认：44
+				nextImg : 'fs://img/back.png', //（可选项）字符串类型；底部下一集按钮的背景图片，要求本地路径（widget://、fs://）；默认：下一集按钮图标
+				timeSize : 14, //（可选项）数字类型；底部时间标签大小；默认：14
+				timeColor : '#fff', //（可选项）字符串类型；底部时间标签颜色，支持#、rgba、rgb；默认：#fff
+				sliderImg : 'fs://img/slder.png', //（可选项）字符串类型；底部进度条滑块背景图片，要求本地路径（widget://、fs://）；默认：滑块小图标
+				progressColor : '#696969', //（可选项）字符串类型；进度条背景色，支持#、rgba、rgb；默认：#696969
+				progressSelected : '#76EE00' //（可选项）字符串类型；滑动后的进度条背景色，支持#、rgb、rgba；默认：#76EE00
+			}
+		},
+		path : 'http://222.21.218.207/7o50kb.com2.z0.glb.qiniucdn.com/c1.1.mp4', //（可选项）字符串类型；文档的路径，支持网络和本地（fs://）路径；默认：未传值时不播放
+		//在 android 平台上不支持 widget://
+		autoPlay : true //（可选项）布尔类型；打开时是否自动播放；默认：true（自动播放）
+	}, function(ret, err) {
+		if (ret) {
+			if (ret.eventType == 'back') {
+				//当全屏播放点击返回的时候
+				//继续当前播放
+				videoPlayer.start();
+				videoPlayer.seekTo({
+					seconds : progressvalue
+				});
+			}
+		} else {
+			alert(JSON.stringify(err));
+		}
+	});
+}
+
+//改变播放的状态
+function changestom(time) {
+	if (time < 60) {
+		if (time < 10) {
+			return ("00:0" + time);
+		} else {
+			return ("00:" + time);
+		}
+	} else {
+		var minute = parseInt(time / 60);
+		if (minute < 10) {
+			var second = time - (minute * 60);
+			if (second < 10) {
+				second = "0" + second;
+			}
+			return ("0" + minute + ":" + second);
+		} else {
+			var second = time - (minute * 60);
+			if (second < 10) {
+				second = "0" + second;
+			}
+			return (minute + ":" + second);
+		}
+	}
+}
+
+//当前视频播放进度 时间
+var progressvalue = 0;
+/**
+ *添加监听时间 用来进行简单的暂停 播放动作
+ */
+function addplaytimeevent() {
+	videoPlayer = api.require('videoPlayer');
+	videoPlayer.addEventListener({
+		name : 'play'
+	}, function(ret, err) {
+		if (ret) {
+			var el = document.getElementById("inline-range");
+			if (ret.eventType == 'playing') {
+				var timenow = ret.current;
+				progressvalue = parseInt(timenow);
+				document.getElementById("nowtime").innerHTML = changestom(progressvalue);
+				$api.val(el, progressvalue);
+			}
+			if (ret.eventType == 'stop') {
+				document.getElementById("nowtime").innerHTML = changestom(0);
+				progressvalue = 0;
+				$api.val(el, 0);
+			}
+		} else {
+			alert(JSON.stringify(err));
+		}
+	});
+}
+
+/**
+ *添加监听时间 用来进行 播放动作
+ */
+function playing() {
+	if (isplaying == 1) {
+		isplaying = 0;
+		document.getElementById("idplaying").src = "../../../image/videoplay/zanting.png";
+		videoPlayer.start();
+	} else {
+		isplaying = 1;
+		document.getElementById("idplaying").src = "../../../image/videoplay/bofang.png";
+		videoPlayer.pause();
+	}
+}
+
+
+function getvideoData() {
+
+	api.showProgress({
+		title : '加载中...',
+		modal : false
+	});
+	var dataId = api.pageParam.dataId;
+	// 得到传递的每个视频的id
+	//alert(dataId);
+	var getActivityById = '/video?filter=';
+	var urlParam = {
+		where : {
+			id : dataId
+		}
+	};
+	ajaxRequest(getActivityById + JSON.stringify(urlParam), 'GET', '', function(ret, err) {
+		if (ret) {
+			var content = $api.byId('act-detail');
+			var tpl = $api.byId('act-template').text;
+			var tempFn = doT.template(tpl);
+			content.innerHTML = tempFn(ret[0]);
+
+		} else {
+			api.toast({
+				msg : err.msg,
+				location : 'middle'
+			})
+		}
+		api.hideProgress();
+	});
+
+}
+

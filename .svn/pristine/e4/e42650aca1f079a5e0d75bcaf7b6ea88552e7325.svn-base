@@ -1,0 +1,139 @@
+HTML5未来发展趋势解析
+一、移动优先
+如今移动应用层出不穷，可以用只有咱没想到的没有人家没做到的来形容，在这个智能手机和平板电脑大爆炸的时代，尤其是手机，已经成为人们生活中非常重要的一部分，很大一部分人离开手机已经到没法生活的地步了，移动优先已成趋势，不管是开发什么，都以移动为主，移动应用可以极大的方便人们的生活。所以未来HTML5应该会优先在移动设备上更多的应用。如今已经有一些大企业将HTML5应用于移动开发，表现非常出色，所以终将成为趋势。
+二、游戏开发是重要领域
+如今做游戏那应该是相当赚钱的一个领域了，但是做手游尤其是收费的游戏，开发原声应用就有局限了，因为iOS系统充值需要向苹果公司支付30%的提成，而利用HTML5开发web应用，可以很巧妙的躲过这30%的提成。所以游戏开发商应该是从HTML5中获益最多的一方。
+三、响应式设计
+在HTML 5真的改变移动开发平台之前，必须要迈出重要一步，那就是“响应式设计”，也就是屏幕可以根据内容而自动调整大小。然而响应式设计也是一件非常不容易的事情，因为当今各式各样的设备实在是让开发者眼花缭乱，手足无措。要想做好响应式设计，就必须洞悉内容与屏幕之间的反馈关系，响应式设计要完全离开“流”，转而注重内容是如何在网页和移动设备中被处理的，这一过程还在继续，HTML 5会让它最终成为可能。
+四、设备访问
+消除Web应用与原生应用界限的最大障碍就是浏览器访问移动设备基本特性的能力，比如照相机，通讯录，日历，加速器等，利用HTML5实现此能力方面，Mozilla一直在努力通过移动浏览器Fennec来将强设备访问能力。对许多移动开发商来说，提高设备访问能力是HTML5最令人激动的革新，这意味着Web应用能够登陆移动设备而无需做任何PhoneGap式打包，游戏开发商当然最开心，因为某些特性对他们来说是封锁的，比如能整合到游戏中的加速器。这就开启了另一个可能的世界，比如能与云更好地整合并提高游戏可玩性，有了HTML5这个平台，开发商可以不再依赖于Java语言，CSS3，HTML及其它程序语言。
+五、离线缓存
+离线缓存算是比较新的一个概念，简单来说就是在离线情况下，web应用还可以正常运行。传统意义上的web应用需要依赖于网络，而HTML5的离线缓存可以冲破这个束缚，利用离线缓存技术，可以在离线状态下正常使用web应用。目前已经有产品实现了这个方式。比如亚马逊Kindle的云阅读器。
+HTML5主流框架介绍及对比
+bootstrap
+1、简介：
+Bootstrap 是一个用于快速开发 Web 应用程序和网站的前端框架。Bootstrap 是基于 HTML、CSS、JAVA 的。
+2、基本结构：
+Bootstrap 提供了一个带有网格系统、链接样式、背景的基本结构。这将在 Bootstrap 基本结构 部分详细讲解。
+3、CSS：
+Bootstrap 自带以下特性：全局的 CSS 设置、定义基本的 HTML 元素样式、可扩展的 class，以及一个先进的网格系统。这将在 Bootstrap CSS 部分详细讲解。
+4、Java 插件：
+Bootstrap 包含了十几个自定义的 jQuery 插件。您可以直接包含所有的插件，也可以逐个包含这些插件。这将在Bootstrap 插件 部分详细讲解。
+sui mobile
+SUI Mobile 是一套基于 Framework7 开发的UI库。它非常轻量、精美，只需要引入我们的CDN文件就可以使用，并且能兼容到 iOS 6.0+ 和 Android 4.0+，非常适合开发跨平台Web App。cmd脚本语言。
+轻量的UI库
+SUI Mobile 非常轻量，核心库压缩Gzip后的JS、CSS网络传输体积总共只有52K，却提供了20+个常用的组件。
+对于只有HTML&CSS的组件，你只需要复制HTML代码既可以使用。他的大部分JS组件都是独立的 Zepto 插件，并且提供了Zepto/jQuery 风格的API，你将会非常熟悉这种方式。
+jQuery UI
+jQuery UI 特性：
+简单易用
+继承 jQuery 简易使用特性，提供高度抽象接口，短期改善网站易用性。
+开源免费
+采用 MIT & GPL 双协议授权，轻松满足自由产品至企业产品各种授权需求。
+广泛兼容
+兼容各主流桌面浏览器。包括IE 6+、Firefox 2+、Safari 3+、Opera 9+、Chrome 1+。
+轻便快捷
+组件间相对独立，可按需加载，避免浪费带宽拖慢网页打开速度。
+标准先进
+支持 WAI-ARIA，通过标准 XHTML 代码提供渐进增强，保证低端环境可访问性。
+美观多变
+提供近 20 种预设主题，并可自定义多达 60 项可配置样式规则，提供 24 种背景纹理选择。
+jQuery mobile
+jQuery Mobile 是针对触屏智能手机与平板电脑的网页开发框架。
+jQuery Mobile 构建于 jQuery 以及 jQuery UI类库之上，如果您了解 jQuery，您可以很容易的学习 jQuery Mobile。
+jQuery Mobile 使用了极少的 HTML5、CSS3、Java 和 AJAX 脚本代码来完成页面的布局渲染。
+15款测试html5响应式的在线工具
+手机、平板灯手持设备的增多，网站要顺应变化，就必须要做响应式开发，响应式网站最大的特点在于可以在不同设备下呈现不同的布局，是基于html5+css3技术，目前越来越多的网站开始采用了响应式设计，而下面15款工具可以方便测试你的html5响应式效果。
+
+Responsinator
+
+http://www.responsinator.com/
+
+Responsinator提供了大家在不同设备viewport下查看网站效果的特性，提供了iphone，android，ipad，kindle及其多种设备上的预览效果，你可以方便的看到需要支持的设备的响应式设计效果图。
+
+Responsive.is
+
+http://responsive.is/
+
+responsive提供了5种设备下的预览效果展示
+
+Kuapingce
+
+http://www.kuapingce.com/
+
+跨屏测 取自“跨屏”+“评测”，结合在一起取名 跨屏测，网址是跨屏测的拼音 ，切图网 [ www.qietu.com ] 创建于2015年12月。它是国内首个致力于跨屏幕响应式测试的工具类的产品，目的是为了帮助你查看你的网站的跨屏幕（响应式）效果，跨屏测收集了主流 屏幕的尺寸大小，方便你快速了解网站在不同设备下的样子。
+
+Responsive Web Design Testing Tool
+
+http://mattkersley.com/responsive/
+
+类似responsivator，但是界面更简单
+
+Responsivepx
+
+http://responsivepx.com/?m.gbin1.com#1035x480&scrollbars
+
+允许你用拖动的方式来修改窗口大小，模拟不同的设备屏幕
+
+screenqueri.es
+
+http://screenqueri.es/
+
+它支持localhost本地方式测试你的应用或者网站。
+
+Aptus
+
+https://itunes.apple.com/gb/app/aptus/id510487565?mt=12
+
+一个工具类的浏览器，可以帮助你测试响应式设计
+
+Bricss
+
+http://www.benjaminkeen.com/open ... design-bookmarklet/
+
+一个帮助你测试响应式的书签，你可以方便的整合到你的浏览器里
+
+Izilla Media Query Debugger
+
+http://izilla.com.au/git/izilla.mq.debugger.bookmarklet.html
+
+这个js可以帮助你添加伪元素到body元素上用来侦测宽高 ，当然你也可以使用他们提供的bookmark：http://izilla.com.au/git/izilla.mq.debugger.bookmarklet.html
+
+Screenfly
+
+http://quirktools.com/screenfly/
+
+支持4种设备的在线响应式设计测试工具，并且还提供相关开发的设计图和文档。
+
+ViewPort Resizer
+
+http://lab.maltewassermann.com/viewport-resizer/
+
+另外一个书签式的工具
+
+Jresizer
+
+http://www.toddmotto.com/jresize ... ponsive-development
+
+一个jQuery的响应式开发工具插件，帮助你创建响应式的窗口，方便你的开发和设计流程
+
+Resize My Browser
+
+http://resizemybrowser.com/
+
+一个简单的帮助你创建指定宽高新开窗口的web工具
+
+juicer
+
+http://juicecreative.co.uk/juicer/website/index.php
+
+一个在线的展示响应式的工具，支持iphone，android等设备的显示，带有实物图。
+
+ish
+
+http://bradfrostweb.com/demo/ish/
+
+一个比较新的在线查看响应式效果的web工具，支持不同尺寸的展示。
+
+原文地址：http://bbs.qietu.cn/forum.php?mod=viewthread&tid=15059
+

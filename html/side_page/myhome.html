@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title>帮主详情</title>
+		<link rel="stylesheet" type="text/css" href="../../css/aui/aui.css">
+		<link rel="stylesheet" type="text/css" href="../../css/aui/style.css">
+		<script type="text/javascript" src="../../script/common.js"></script>
+		<script type="text/javascript" src="../../script/mycenter/mycenter.js"></script>
+	    <script type="text/javascript" src="../../script/api.js"></script>
+	</head>
+	<body>
+		<header class="aui-bar aui-bar-nav bar-bgcolor" id="aui-header">
+			<a class="aui-pull-left small-avatar" tapmode onclick="closeWin()">
+			<span class="aui-iconfont aui-icon-left"></span> <img src="../../image/sidepage/pic_headphoto_normal.png" class="avatar" /> </a>
+			<a class="aui-pull-right"> <span class="aui-iconfont aui-icon-like"></span> </a>
+		</header>
+		<section class="aui-content image" >
+			<img src="../../image/sidepage/pic_headphoto_normal.png" class="avatar"  onclick="openLogin()"/>
+			<div class="helper-name">
+				史跃伟
+			</div>
+		</section>
+		<div class="aui-content">
+			<ul class="aui-list-view aui-in">
+				<li class="aui-list-view-cell">
+					<i class="aui-iconfont aui-icon-profile aui-bg-info"></i>我的学号&nbsp;&nbsp;201370044237
+				</li>
+				<li class="aui-list-view-cell">
+					<i class="aui-iconfont aui-icon-pay aui-bg-danger"></i>我的班级&nbsp;&nbsp;卓越131
+				</li>
+				<li class="aui-list-view-cell">
+					<i class="aui-iconfont aui-icon-edit aui-bg-success"></i>我的通知&nbsp;&nbsp;你有一条未读信息
+				<li class="aui-list-view-cell">
+					<i class="aui-iconfont aui-icon-shop aui-bg-warning"></i>意见反馈
+				</li>
+				<li class="aui-list-view-cell">
+					<i class="aui-iconfont aui-icon-favor aui-bg-info"></i>清除垃圾
+				</li>
+				<li class="aui-list-view-cell">
+					<i class="aui-iconfont aui-icon-form aui-bg-danger"></i>分享推荐
+				</li>
+				<li class="aui-list-view-cell">
+					<i class="aui-iconfont aui-icon-profile aui-bg-info"></i>客服电话
+				</li>
+				<li class="aui-list-view-cell">
+					<i class="aui-iconfont aui-icon-pay aui-bg-danger"></i>检查更新
+				</li>
+				<li class="aui-list-view-cell">
+					<i class="aui-iconfont aui-icon-edit aui-bg-success"></i>关于我们
+				<li class="aui-list-view-cell">
+					<i class="aui-iconfont aui-icon-shop aui-bg-warning"></i>设置
+				</li>
+				
+			</ul>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		apiready = function() {
+			api.parseTapmode();
+			var header = $api.byId('aui-header');
+			$api.fixStatusBar(header);
+		}
+		var startX, startY, i = 1;
+		$api.addEvt($api.dom("body"), 'touchstart', function(event) {
+		});
+		$api.addEvt($api.dom("body"), 'touchmove', function(event) {
+			i++;
+			if (document.body.scrollTop >= 20) {
+				var opacity = i / 10;
+				if (opacity >= 1) {
+					opacity = 1;
+				}
+				$api.addCls($api.byId('aui-header'), "white");
+				$api.removeCls($api.byId('aui-header'), "nowhite");
+				$api.css($api.byId('aui-header'), "opacity: " + opacity + ";");
+				$api.addCls($api.dom("#aui-header img.avatar"), 'show');
+				$api.removeCls($api.dom("#aui-header img.avatar"), 'hide');
+			} else {
+				if ($api.dom(".white")) {
+					$api.addCls($api.dom("#aui-header img.avatar"), 'hide');
+					$api.removeCls($api.dom("#aui-header img.avatar"), 'show');
+					$api.removeCls($api.byId('aui-header'), "white");
+					$api.css($api.byId('aui-header'), "opacity: 0;");
+				}
+			}
+		});
+	</script>
+</html>

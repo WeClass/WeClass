@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widget id="A6902547162870" version="0.0.1"> 
+  <name>微课</name>  
+  <description/>  
+  <author email="2671523019@qq.com" href="http://www.apicloud.com">syw123456</author>  
+  <content src="index.html"/>  
+  <preference name="pageBounce" value="false"/>  
+  <preference name="appBackground" value="rgba(0,0,0,0)"/>  
+  <preference name="windowBackground" value="rgba(0,0,0,0)"/>  
+  <preference name="frameBackgroundColor" value="rgba(0,0,0,0)"/>  
+  <preference name="vScrollBarEnabled" value="true"/>  
+  <preference name="hScrollBarEnabled" value="false"/>  
+  <preference name="autoLaunch" value="true"/>  
+  <preference name="autoUpdate" value="true"/>  
+  <preference name="fullScreen" value="true"/>  
+  <preference name="smartUpdate" value="true"/>  
+  <preference name="debug" value="true"/>  
+  <preference name="iOS7StatusBarAppearance" value="true"/>  
+  <preference name="statusBarAppearance" value="true"/>  
+  <preference name="softInputMode" value="resize"/>  
+  <preference name="statusBarAppearance" value="true"/>  
+  <permission name="readPhoneState"/>  
+  <permission name="location"/>  
+  <permission name="internet"/>  
+  <permission name="fileSystem"/>  
+  <permission name="bootCompleted"/>  
+  <permission name="hardware"/>  
+  <permission name="contact"/>  
+  <permission name="record"/>  
+  <permission name="camera"/>  
+  <permission name="sms"/>  
+  <permission name="call"/>  
+  <access origin="*"/>  
+  <feature name="smsVerify"> 
+    <param name="android_app_key" value="10781e5f3d3b9"/>  
+    <param name="android_app_secret" value="ffef796a696ad5b4c74cdfb0fc73190e"/>  
+    <param name="ios_app_key" value="10782ef24e668"/>  
+    <param name="ios_app_secret" value="fc7c7ac7fc38980c6b6717245319e522"/> 
+  </feature>  
+  <feature name="qq"> 
+    <param name="urlScheme" value="tencent1105194737"/>  
+    <param name="apiKey" value="1105194737"/> 
+  </feature>  
+  <feature name="wx"> 
+    <param name="urlScheme" value="wxff2a374e9771bead"/>  
+    <param name="apiKey" value="wxff2a374e9771bead"/>  
+    <param name="apiSecret" value="106dbee0e25de2a485186ad2ccf11d00"/> 
+  </feature>  
+  <feature name="weibo"> 
+    <param name="urlScheme" value="wb927844335"/>  
+    <param name="apiKey" value="927844335"/>  
+    <param name="registUrl" value="http://www.apicloud.com"/> 
+  </feature> 
+</widget>

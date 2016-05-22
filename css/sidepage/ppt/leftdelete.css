@@ -1,0 +1,102 @@
+.aui-list-view {
+	padding-top: 10px;
+	background-color: #F6F3F7;
+}
+/*整体的样式*/
+.swiper-container {
+	width: 100%;
+	height: 70px;
+	margin-bottom: 10px;
+	transition: opacity 200ms;
+	-webkit-transition: opacity 200ms;
+}
+
+.swiper-container.dele {
+	opacity: 0;
+}
+/*侧滑的样式*/
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+	display: -webkit-box;
+	display: -webkit-flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	width: 0 !important;
+}
+/*第一个子元素的样式*/
+.swiper-slide .text, .swiper-slide .fontb span:nth-child(2) {
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+}
+
+.swiper-slide:first-child {
+	width: 100% !important;
+	padding: 5px 10px;
+}
+
+.swiper-slide:first-child, .swiper-slide.slide-left {
+	text-align: left;
+	-webkit-justify-content: flex-start;
+}
+/*图片的样式*/
+.swiper-slide .icon {
+	width: 91px;
+	height: 91px;
+	margin-right: 8px;
+}
+/*ppt与时间之间的样式*/
+.swiper-slide .text .contain {
+	font-size: 16px;
+	line-height: 19px;
+	margin-bottom: 8px;
+	height: 40px;
+}
+/*ppt的样式*/
+.aui-ellipsis-3 {
+	display: -webkit-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+	white-space: normal !important;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	margin-top: 20px;
+}
+/*时间的样式*/
+.swiper-slide .text .fontb {
+	display: -webkit-box;
+	display: -webkit-flex;
+	-webkit-box-pack: center;
+	font-size: 14px;
+	color: #ccc;
+	margin-bottom: 25px;
+}
+
+.swiper-slide .fontb span:nth-child(2) {
+	text-align: center;
+}
+
+.swiper-slide.swipe-btn.aui-btn-c0 {
+	background-color: #c0c0c0;
+}
+/*打开的样式*/
+.swiper-slide.swipe-btn {
+	background-color: #f1c40f;
+	color: #fff;
+	border-bottom: none;
+	width: 25% !important;
+	height: 100%;
+	font-size: 16px;
+	line-height: 21px;
+}
+/*删除的样式*/
+.swiper-slide.swipe-btn.aui-btn-warning {
+	background-color: #f00;
+	border: none;
+}

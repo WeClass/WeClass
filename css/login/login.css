@@ -1,0 +1,228 @@
+body {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+}
+.header {
+	display: -webkit-box;
+	
+}
+
+.title {
+	-webkit-box-flex: 1;
+	color: #FFFFFF;
+	text-align: left;
+	line-height: 50px;
+	font-size: 18px;
+	padding-top: 15px;
+}
+/**头部 **/
+/*登录*/
+.detail-header {
+    height:70px;
+	border-bottom: 1px solid #CDCDCD;
+	background-color: #10B6F2;
+}
+.back {
+	background-size: 40px !important;
+	background-image: url("../../image/sidepage/login/weather_back@2x.png");
+	background-position: right !important;
+	background-repeat: no-repeat;
+	margin-top: 15px;
+}
+/*注册*/
+.login-header-btn {
+	color: #FFFFFF;
+	display: block;
+	background-size: 30px;
+	margin-top: 10px;
+	padding: 20px;
+}
+
+/**头部 **/
+/**中部**/
+.content {
+	-webkit-box-flex: 1;
+}
+
+.form {
+	margin: 20px;
+}
+.input-wrap {
+	padding: 10px 0;
+	display: -webkit-box;
+	border-bottom: 1px solid #d4d4d4;
+}
+i {
+	display: block;
+	width: 30px;
+	height: 30px;
+	background-size: 30px;
+	background-repeat: no-repeat no-repeat;
+	background-position: center;
+}
+.user {
+	background-image: url("../../image/state/login_username_icon@2x.png");
+}
+.password {
+	background-image: url("../../image/state/login_password_icon@2x.png");
+}
+.input-wrap input {
+	display: block;
+	-webkit-box-flex: 1;
+	background-color: rgba(255, 255, 255, 0);
+	outline: none;
+	height: 32px;
+}
+.form {
+	background-color: rgba(255, 255, 255, 0.8);
+	margin: 20px;
+	padding: 10px 10px;
+	border-radius: 8px;
+}
+
+.loginTip {
+	text-align: right;
+	padding-bottom: 20px;
+	padding-right: 30px;
+}
+.loginTip a {
+	text-decoration: underline;
+	color: #bfbfbf;
+	font-size: 15px;
+	font-family: '微软雅黑';
+}
+.btn {
+	display: block;
+	margin: 0 28px;
+	text-align: center;
+	border-radius: 8px;
+	height: 40px;
+	line-height: 40px;
+	background-color: #FD5554;
+	border: 1px solid #ffffff;
+	color: #ffffff;
+}
+input {
+	padding-left: 10px;
+	font-size: 18px;
+}
+.other-login-wrap, .other-login {
+	margin-top: 20px;
+	text-align: center;
+	color: #CACACA;
+}
+.other-login-lable {
+	padding: 0px 20px;
+	border-bottom: 1px solid #E7E7E7;
+}
+.other-login {
+	text-align: center;
+}
+.other-login div {
+	display: inline-block;
+	position: relative;
+	width: 30%;
+	height: 60px;
+	background-repeat: no-repeat no-repeat;
+	background-position: center center;
+	background-size: 60px;
+}
+.other-login div span {
+	margin-top: 70px;
+}
+.wechat {
+	background-image: url("../../image/sidepage/login/ic_oauth_wechat.png");
+}
+.qq {
+	background-image: url("../../image/sidepage/login/ic_oauth_qq.png");
+}
+.sina {
+	background-image: url("../../image/sidepage/login/ic_oauth_weibo.png");
+}
+/**底部**/
+
+/*删除*/
+.del {
+
+	border-radius: 18px;
+	background: #e6e6e6 url("../../image/state/del.png") no-repeat center;
+	background-size: 10px;
+	visibility: hidden;
+	width: 18px;
+	height: 18px;
+	margin-top: 5px;
+}
+.show {
+	visibility: visible;
+}
+.light {
+	border-color: #55abce;
+}
+/*循环图片*/
+/*slide*/
+.swipe {
+	overflow: hidden;
+	visibility: hidden;
+	position: relative;
+}
+.swipe-wrap {
+	overflow: hidden;
+	position: relative;
+}
+.swipe-wrap > div {
+	float: left;
+	width: 100%;
+	position: relative;
+}
+
+.swipe-wrap > div {
+	height: 200px;
+	overflow: hidden;
+	position: relative;
+}
+.swipe-wrap img {
+	height: 200px;
+	width: 100%;
+}
+#slide {
+	height: 200px;
+	margin: 0 auto;
+	position: relative;
+}
+#slide div label {
+	background-image: -webkit-linear-gradient(top, rgba(59,59,59,.6), rgba(27,27,27,.6), rgba(50,50,50,.4), rgba(31,31,31,.4));
+	background-image: linear-gradient(top, rgba(59,59,59,.6), rgba(27,27,27,.6), rgba(50,50,50,.4), rgba(31,31,31,.4));
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 20px;
+	display: block;
+	color: #fff;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+#pointer {
+	position: absolute;
+	right: 10px;
+	bottom: 12px;
+	overflow: hidden;
+}
+#pointer li {
+	float: left;
+	list-style: none;
+}
+#pointer li a {
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	border-radius: 6px;
+	border: 1px solid #55abce;
+	margin-right: 4px;
+}
+#pointer li a.active {
+	background-color: #55abce;
+}
+
