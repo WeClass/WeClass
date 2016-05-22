@@ -1,0 +1,210 @@
+1.doT.js的技术
+主要的用途就是，在写好的模板上，放进数据，生成含有数据的html代码。
+这是很简单的web前端模板框架。
+在模板中，it这个变量，就是传递进去的数据对象，应该就是英语的items；
+doT.template( template )( obj )  代码解释：把模板template，作为参数传入doT.template()  方法，dot就把模板处理一下，然后你再把数据对象传入，返回值，就是html与数据 一起生成的html代码了，再拼接到页面即可；
+在模板中，{{}}  包裹的内容，就是javascript代码，dot会负责处理，因为这写法怪异，新手一般出现模板写错的情况，仔细排查即可 。
+2.swipe.js
+轻量级js触摸滑动类库 – Swipe JS。这是一个非常小的一个javascript类库，但他的功能却不简单，它可以用来展示web页面上的任何内容，支持精确的触摸移动操作，而且还可以设置自动播放、等比例缩放等等
+实用性的功能,swipe.js是一个轻量级的移动滑动组件，支持触摸移动，支持响应式页面。
+Swipe可以扩展可选参数-通过设置对象的键值对:
+startSlide Integer (默认:0) - Swipe开始的索引
+speed Integer (默认:300) - 前进和后台的速度，单位毫秒.
+auto Integer - 自动滑动 (time in milliseconds between slides)
+continuous Boolean (默认:true) -是否可以循环播放（注：我设置为false好像也是循环的）
+disableScroll Boolean (默认:false) - 停止触摸滑动
+stopPropagation Boolean (默认:false) -停止事件传播
+callback Function - 回调函数，可以获取到滑动中图片的索引.
+transitionEnd Function - 在最后滑动转化是执行.
+3.跨域异步请求，支持文件上传
+ajax({params}, callback(ret, err))
+4.安全哈希算法（Secure Hash Algorithm）SHA1
+5. 
+JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式，易于阅读和编写，同时也易于机器解析和生成。
+    JSON.stringify(),将value(Object,Array,String,Number...)序列化为JSON字符串
+    JSON.parse(),　将JSON数据解析为js原生值
+    toJSON(),作为JSON.stringify中第二个参数(函数过滤器)补充  
+                        //stringify（）javaScript对象序列化为JSON字符串，JSON.stringify()输出的JSON字符串不包含任何空字符或缩进
+						//parse（）用于把JSON字符串解析为原生JavaScript
+						//var str = JSON.stringify(ret, null, 4);
+						//var str1=JSON.parse(str);
+						//alert(str1.info.nickname);
+6.相对路径与绝对路径
+ /表示下一个文件路径
+ ../表示上一个文件路径
+7.问如何优雅的用js动态的添加html代码
+(1)使用DOM
+全选复制放进笔记// 使用createElement创建元素
+var dialog = document.createElement('div');
+var img = document.createElement('img');
+var btn = document.createElement('input');
+var content = document.createElement('span');
+// 添加class
+dialog.className = 'dialog';
+// 属性
+img.src = 'close.gif';
+// 样式
+btn.style.paddingRight = '10px';
+// 文本
+span.innerHTML = '您真的要GG吗？';
+// 在容器元素中放入其他元素
+dialog.appendChild(img);
+dialog.appendChild(btn);
+dialog.appendChild(span);
+(2)使用HTML5 template标签
+<template id="dialog_tpl">
+  <div class="dialog">
+    <img src="" alt="">
+    <input type="button" value="确认">
+    <span></span>
+  </div>
+</template>
+接着还是得使用DOM操作，只是不需要创建元素了，然后复制一份副本放入正文即可。
+
+var dialog = document.querySelector('#dialog_tpl');
+dialog.content.querySelector('img').src = 'close.gif';
+dialog.content.querySelector('span').innerHTML = '您真的要GG吗？';
+document.body.appendChild(dialog.content.cloneNode(true));
+template标签是隐藏的，最多是用在列表中，可以产生多个副本。详细使用方法可以参考这篇文章。如果要兼容不支持template的浏览器，可以把content的部分写一个兼容方法，并且把template用CSS隐藏掉即可。
+(3)3.使用HTML模板
+(https://developer.mozilla.org/en-US/docs/JavaScript_templates)有各种模板，并且按语法风格分类。其实模板大同小异，就是动态修改模板文件使之成为一个可用的静态HTML文件，其实你也可以自己在需要的地方加载一部分HTML。只需要使用ajax请求一个情态的HTML文件并把返回的HTML代码放入当前的HTML中即可。
+-webkit-animation的使用    http://www.w3cplus.com/css3/css3-3d-transform.html
+webkit-animation:仍旧是一个复合属性，
+
+-webkit-animation: name duration timing-function delay iteration_count direction;
+
+包括以下几个属性
+
+（1）  -webkit-animation-name    这个属性的使用必须结合@-webkit-keyframes一起使用
+
+eg:  @-webkit-keyframes fontchange{
+
+0%{font-size:10px;}
+
+30%{font-size:15px;}
+
+100%{font-siez:12px;}
+
+}
+（2）-webkit-animation-duration   表示动画持续的时间
+（3）-webkit-animation-timing-function  表示动画使用的时间曲线
+（4）-webkit-animation-delay    表示开始动画之前的延时
+【语法】 -webkit-animation-delay: delay_time;
+（5）-webkit-animation-iteration-count  表示动画要重复几次
+【语法】-webkit-animation-iteration-count: times_number;
+（6） -webkit-animation-direction   表示动画的方向
+【语法】-webkit-animation-direction: normal(默认)  | alternate
+normal  方向始终向前
+alternate 当重复次数为偶数时方向向前，奇数时方向相反
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

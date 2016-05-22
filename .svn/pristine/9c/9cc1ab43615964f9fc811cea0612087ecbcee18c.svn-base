@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<RepositoryCustomSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <LastUsedView>Log</LastUsedView>
+  <AutoRefresh>true</AutoRefresh>
+  <LogBranchFilterIndex>0</LogBranchFilterIndex>
+  <SidebarExpandedItems>
+    <string>文件状态</string>
+    <string>分支</string>
+    <string>分支/master</string>
+    <string>远程</string>
+  </SidebarExpandedItems>
+  <SidebarWidth>140</SidebarWidth>
+  <AutoRefreshRemotes>true</AutoRefreshRemotes>
+  <LastCheckedRemotes>2016-05-07T12:13:30.8060533+08:00</LastCheckedRemotes>
+  <RemoteProjectLinks>
+    <RepositoryRemoteProjectLink>
+      <Type>Bitbucket</Type>
+      <BaseUrl>https://www.bitbucket.org</BaseUrl>
+      <RemoteName>origin</RemoteName>
+      <Username />
+      <Identifier>shiyuewei/weiclass</Identifier>
+    </RepositoryRemoteProjectLink>
+  </RemoteProjectLinks>
+  <CommitTextLinks />
+  <SubtreeLinks />
+  <IncomingSavedCount>0</IncomingSavedCount>
+  <OutgoingSavedCount>0</OutgoingSavedCount>
+</RepositoryCustomSettings>

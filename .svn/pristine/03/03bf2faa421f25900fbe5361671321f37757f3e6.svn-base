@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title>ppt</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/api.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/aui/aui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/aui/aui-list-swipe.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/common.css"/>
+		<script type="text/javascript" src="../../../script/api.js"></script>
+		<script type="text/javascript" src="../../../script/common.js"></script>
+		<script type="text/javascript" src="../../../script/aui/aui-list-swipe.js"></script>
+		<script type="text/javascript" src="../../../script/doT.min.js"></script>
+		
+	</head>
+	<body>
+		<header>
+			<div class="header">
+				<a class="menu" tapmode="" onclick="closeWin()"></a>
+				<div class="title" >
+					PPT
+				</div>
+				<a></a>
+			</div>
+		</header>
+		
+		<section class="aui-content" id="banner">
+			<ul class="aui-list-view">
+				<script id="act-template" type="text/x-dot-template">
+					{{ for(var i =0; i < it.length; i++) { }}
+					<li class="aui-user-view-cell aui-img">
+					<a tapmode="" onclick="openpptDetail('{{=it[i].id}}','{{=it[i].pptcontent.url}}');">
+					<div class="aui-swipe-handle">
+					<img class="aui-img-object aui-pull-left" src="{{=it[i].pptimg.url}}">
+					<div class="aui-img-body">
+					<span class="aui-text-danger">{{=it[i].ppttitle}}<em>{{=it[i].ppttime}}</em></span>
+					<p class='aui-ellipsis-1'>{{=it[i].pptpeople}}</p>
+					</div>
+					</div>
+					<div class="aui-swipe-right-btn aui-bg-danger">打开</i></div>
+					</a>
+					</li>
+					{{  }}}
+				</script>
+				<div id="act-content"></div>
+			</ul>
+		</section>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript" src="../../../script/aui/aui-list-swipe.js"></script>
+	<script type="text/javascript" src="../../../script/common.js"></script>
+	<script type="text/javascript" src="../../../script/ppt/myppt.js"></script>
+	<script type="text/javascript">
+		// 初始化
+		var swipe = new ListSwipe();
+		function showMsg(el) {
+			if (!el.classList.contains("aui-swipe-enable")) {
+				api.alert({
+					title : '提示消息',
+					msg : '正常点击操作'
+				});
+				// 复位
+				swipe.resetSwipe();
+			}
+		}
+		
+	</script>
+</html>

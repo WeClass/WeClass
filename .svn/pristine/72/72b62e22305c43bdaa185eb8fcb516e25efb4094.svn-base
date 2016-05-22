@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>注册</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/login/register.css"/>
+		<script type="text/javascript" src="../../script/api.js"></script>
+		<script type="text/javascript" src="../../script/login/smsverify.js"></script>
+		<script type="text/javascript" src="../../script/login/delete.js"></script>
+		<script type="text/ecmascript" src="../../script/login/md5.js"></script>
+		<script type="text/javascript" src="../../script/login/jquery.js"></script>
+	</head>
+	<body>
+		<header>
+			<div class="header detail-header">
+				<div class="back login-header-btn" tapmode="" onclick="closeWin()"></div>
+				<div class="title" id="title">
+					注册
+				</div>
+				<div class="login-header-btn" onclick="userlogin()">
+					登录
+				</div>
+			</div>
+		</header>
+		<div class="content">
+			<div class="form">
+				<div class="input-wrap">
+					<i class="user"></i>
+					<input maxlength="11" class="txt" id="phone"  type="text" placeholder="手机号" onfocus="edit(this)" onblur="cancel(this)"  >
+					<span  class="del" id=""       tapmode="" onclick="delWord(this)"></span>
+				</div>
+				<div class="input-wrap">
+					<i     class="password"></i>
+					<input type="text" placeholder="验证码"  id="code" >
+					<span  id="codebtn" class="getcode" onclick="sendsms()">获取验证码</span>
+				</div>
+				<div class="input-wrap">
+					<i      class="password"></i>
+					<input  class="txt" type="password" placeholder="密码"  id="password" onfocus="edit(this)" onblur="cancel(this)" >
+					<span   class="del" tapmode="" onclick="delWord(this)"></span>
+				</div>
+			</div>
+			<div class="btn" id="register"onclick="verify()">
+				注册
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		//发送短信验证码
+		function sendsms() {
+			//得到手机号
+			var phone = document.getElementById("phone").value;
+			//首先判断手机号不空
+			if (phone == null || phone == "") {
+				alert("输入手机号码");
+				phone.focus
+			}
+			//手机不空，先去数据库检索数据判断手机是否已经被注册，注册过则提示，
+			//否则执行验证倒计时同时发送短信
+			else {
+				api.showProgress({
+				});
+				//发送验证码
+				smsVerify.sms({
+					phone : phone,
+				}, function(ret, err) {
+					if (ret.status) {
+						// 新增的安卓智能验证功能
+						if (ret.smart == true) {// 安卓版特有功能 智能验证成功
+							api.hideProgress();
+							api.alert({
+								msg : '该手机号已被注册'
+							});
+						} else {
+							api.hideProgress();
+							//获取短信验证码
+							var validCode = true;
+							alert("daojishi");
+							var time = 60;
+							var code = $(".getcode");
+							if (validCode) {
+								validCode = false;
+								code.addClass("getcode");
+								var t = setInterval(function() {
+									time--;
+									code.html("重新获取(" + time + ")");
+									if (time == 0) {
+										clearInterval(t);
+										code.html("获取验证码");
+										validCode = true;
+									}
+								}, 1000)
+							}
+							
+						}
+					} else {
+						api.hideProgress();
+						api.alert({
+							msg : err.code + ' 验证码发送失败'
+						});
+					}
+				});
+			}
+		}
+	</script>
+</html>

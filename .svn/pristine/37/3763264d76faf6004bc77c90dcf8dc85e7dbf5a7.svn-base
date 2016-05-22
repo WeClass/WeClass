@@ -1,0 +1,49 @@
+body {
+	height: auto;
+	min-height: 100%;
+}
+
+/*视频的介绍*/
+#info {
+	padding-bottom: 10px;
+	background-color: #fff;
+}
+#info li {
+	padding-top: 10px;
+	margin-left: 10px;
+	color: #999;
+	font-size: 14px;
+}
+#info .videopeople {
+	background: url("../../image/sidepage/myvideo/videopeople.png") no-repeat left bottom;
+	padding-left: 26px;
+	-webkit-background-size: 16px;
+	background-size: 16px;
+}
+#info .classhour {
+	background: url("../../image/sidepage/myvideo/time.png") no-repeat left bottom;
+	padding-left: 26px;
+	-webkit-background-size: 16px;
+	background-size: 16px;
+}
+
+#main h2 {
+	margin: 10px;
+	font-size: 14px;
+}
+#main label{
+   margin-left: 10px;
+  
+}
+#main p {
+  /* 
+   * 一个值   四边    上              右      下             左
+   * 两个值   上下   左右 
+   * 三个值    上           左右         下
+   * 
+   * */
+	padding: 2px 10px;  
+	font-size: 14px;
+	line-height: 2;
+}
+

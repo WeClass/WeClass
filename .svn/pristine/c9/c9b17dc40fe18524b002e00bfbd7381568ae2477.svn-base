@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>登录</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/login/login.css"/>
+		<script type="text/javascript" src="../../script/api.js"></script>
+		<script type="text/javascript" src="../../script/login/login.js"></script>
+		<script type="text/javascript" src="../../script/login/APICloud-rest-SHA1.js"></script>
+		<script type="text/javascript" src="../../script/login/delete.js"></script>
+		<script type="text/javascript" src="../../script/login/otherslogin/qqlogin.js"></script>
+		<script type="text/javascript" src="../../script/login/otherslogin/sinalogin.js"></script>
+		<script type="text/javascript" src="../../script/login/otherslogin/wechatlogin.js"></script>
+	</head>
+	<body>
+		<header>
+			<div class="header detail-header">
+				<div class="back login-header-btn" tapmode="" onclick="closeWin()"></div>
+				<div class="title" id="title">
+					登录
+				</div>
+				<div class="login-header-btn" onclick="register()">
+					注册
+				</div>
+			</div>
+		</header>
+		<div class="content">
+			<div class="form">
+				<div class="input-wrap">
+					<i class="user"></i>
+					<input maxlength="11" required="必填项" class="txt" type="text" placeholder="手机号"  onfocus="edit(this)" onblur="cancel(this)" id="phone" value="" >
+					<span  class="del" id=""       tapmode="" onclick="delWord(this)"></span>
+				</div>
+				<div class="input-wrap">
+					<i class="password"></i>
+					<input required="必填项" type="password" placeholder="密码" onfocus="edit(this)" onblur="cancel(this)" id="password" value="">
+					<span  class="del" id=""       tapmode="" onclick="delWord(this)"></span>
+				</div>
+			</div>
+			<div class="loginTip">
+				<a tapmode="" onclick="forgetpassword()">忘记密码</a>
+			</div>
+			<div class="btn" id="login" tapmode="" onclick="ensurelogin()">
+				登录
+			</div>
+			<div class="other-login-wrap">
+				<div class="other-login-lable">
+					其它方式登录
+				</div>
+				<div class="other-login">
+					<div class="wechat" onclick="wechatlogin()"></div>
+					<div class="qq" onclick="qqlogin()"></div>
+					<div class="sina" onclick="weibologin()"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

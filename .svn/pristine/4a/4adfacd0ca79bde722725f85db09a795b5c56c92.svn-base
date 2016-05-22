@@ -1,0 +1,108 @@
+body {
+		background: #ffffff;
+	}
+	.bg-dark {
+		background: #333333 !important;
+	}
+	.aui-slide-node {
+	   	color: #ffffff;
+	}
+	img.logo {
+		width: 30%;
+		border-radius: 10px;
+		margin-bottom: 15px;
+	}
+	img.icon {
+		width: 50%;
+		border-radius: 10px;
+	}
+	strong {
+		font-size: 2em;
+		font-weight: 400;
+	}
+	.bg1 {
+		background: #d9e2e5 !important;
+	}
+	.bg2 {
+		background: #eee9e0 !important;
+	}
+	.bg3 {
+		background: #80d3ee !important;
+	}
+	.bg4 {
+		background: #82dd47 !important;
+	}
+	strong.title {
+		color: #ffffff;
+	}
+	.desc {
+		color: #fff;
+		font-size: 0.875em;
+	}
+	.desc p {
+		color: #ffffff;
+	}
+	.close {
+		background: rgba(0,0,0,0.6);
+		padding: 4px 10px;
+		border-radius: 30px;
+		color: #fff;
+		font-size: 0.75em;
+		position: absolute;
+		right: 10px;
+		top: 30px;
+		z-index: 999;
+	}
+	.text-dark {
+		color: #333 !important;
+	}
+	/*
+	   -webkit-animation
+	 * webkit-animation: name(动画名字) duration(动画持续时间) timing-function(表示动画使用的时间曲线) delay(表示开始动画之前的延时) 
+	 * iteration_count( 表示动画要重复几次) direction(表示动画的方向);
+	 * 
+	 * 
+	 * */
+	.fadeInTop {
+		-webkit-animation: fadeInTop 1s;/*是一个复合属性 ,动画持续时间1S*/
+		        animation: fadeInTop 1s;
+	}
+	.fadeInBottom {
+		-webkit-animation: fadeInBottom 1s;
+		        animation: fadeInBottom 1s;
+	}
+    /*
+                  利用CSS3制作淡入淡出动画效果 
+     * */
+	@-webkit-keyframes fadeInTop {
+	    from {
+	        opacity: 0.2;/*初始状态 透明度为0.2*/
+	       /*
+	         transform 位移；向左向下位移则为负“-”。
+	        * translate3d(tx,ty,tz)
+	        *  tx：代表横向坐标位移向量的长度；
+               ty：代表纵向坐标位移向量的长度；
+               tz：代表Z轴位移向量的长度。此值不能是一个百分比值，如果取值为百分比值，将会认为无效值。
+	        * 
+	        * */
+	        -webkit-transform: translate3d(0, -50px, 0);/*translate3d()函数使一个元素在三维空间移动。这种变形的特点是，使用三维向量的坐标定义元素在每个方向移动多少。*/
+	        transform: translate3d(0, -50px, 0);
+	    }
+	    to {
+	        opacity: 1;/*结尾状态 透明度为1*/
+	        -webkit-transform: none;
+	        transform: none;
+	    }
+	}
+	@-webkit-keyframes fadeInBottom {
+	    from {
+	        opacity: 0;
+	        -webkit-transform: translate3d(0, 50px, 0);
+	        transform: translate3d(0, 50px, 0);
+	    }
+	    to {
+	        opacity: 1;
+	        -webkit-transform: none;
+	        transform: none;
+	    }
+	}

@@ -1,0 +1,51 @@
+html, body {
+	height: 100%
+}
+body {
+	background-color: #f2f2f2;
+	font-size: 14px;
+}
+/*头部*/
+#header {
+	background-color: transparent;
+	text-align: center;
+	width: 100%;
+	position: relative;
+}
+/*头部返回按钮*/
+#header .back-icon {
+	position: absolute;
+	left: 10px;
+	bottom: 14px;
+	color: #fff;
+	margin-left: 10px;
+	top:10px;
+	margin-top: 20px;
+	
+}
+/*头部下载*/
+#header .download {
+	position: absolute;
+	right: 10px;
+	bottom: 14px;
+	color: #fff;
+	margin-right: 10px;
+	top:10px;
+	margin-top: 20px;
+
+	
+}
+/*头部标题*/
+#header h1 {
+	font-size: 17px;
+	color:#fff;
+	background-color: transparent !important;
+	font-size: 15px;
+	height: 44px;
+	line-height: 44px;
+}
+
+
+
+
+

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+	<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+	<link rel="stylesheet" type="text/css" href="../css/aui/aui.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/aui/aui-slide.css" />
+	<link rel="stylesheet" type="text/css" href="../css/launch/launch.css"/>
+</head>
+<body>
+	<div id="aui-slide">
+		<div class="aui-slide-wrap" >
+			
+			<div class="aui-slide-node aui-slide-node-middle aui-slide-node-center">
+				<div class="aui-content aui-padded-15 aui-text-center aui-hide">
+					<img src="../image/lanuch/aui.png" class="logo" />
+					<div class="desc">
+						<p><strong class="aui-text-primary">微课</strong></p>
+						<p class="aui-text-primary">您身边的第二课堂，轻松学习，从现在开始！</p>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			
+			<div class="aui-slide-node aui-slide-node-middle aui-slide-node-center bg1">
+				<div class="aui-content aui-padded-15 aui-text-center aui-hide">
+					<img src="../image/lanuch/mokuai.png" class="icon" />
+					<div class="desc">
+						<p><strong class="title aui-text-info">视频</strong></p>
+						<p class="text-dark">最新视频，在您掌上，一览无余，课上没听懂，没关系，课下来体验视频...</p>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			<div class="aui-slide-node aui-slide-node-middle aui-slide-node-center bg2">
+				<div class="aui-content aui-padded-15 aui-text-center aui-hide">
+					<img src="../image/lanuch/yuansheng.png" class="icon" />
+					<div class="desc">
+						<p><strong class="title aui-text-primary">PPT</strong></p>
+						<p class="text-dark">最新PPT的展示，随时观看，随时学习，不一样的学习体验，图像化的展示更有魅力...</p>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			<div class="aui-slide-node aui-slide-node-middle aui-slide-node-center bg3">
+				<div class="aui-content aui-padded-15 aui-text-center aui-hide">
+					<img src="../image/lanuch/gaoxingneng.png" class="icon" />
+					<div class="desc">
+						<p><strong class="title">讲义</strong></p>
+						<p>课堂没记完，没关系，课下体验各个知识点，在这里应有尽有，苦涩难懂不用怕，因为我们有讲义...</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="aui-slide-node aui-slide-node-middle aui-slide-node-center bg4">
+				<div class="aui-content aui-padded-15 aui-text-center aui-hide">
+					<img src="../image/lanuch/kaiyuan.png" class="icon" />
+					<div class="desc">
+						<p><strong class="title">作业</strong></p>
+						<p> 上机作业提前知道，提前预览，及时反馈老师，及时解答，让您感受到不同的学习方式...</p>
+						<p class="aui-padded-15">
+							<div class="aui-btn aui-btn-success" tapmode onclick="openSlidWin()">开启微课之旅吧</div>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="aui-slide-page-wrap"><!--分页容器--></div>
+	</div>
+</body>
+<script type="text/javascript" src="../script/aui/aui-slide.js"></script>
+<script type="text/javascript">
+	var slide = new auiSlide({
+		container:document.getElementById("aui-slide"),
+		"height":window.innerHeight,
+		"speed":300,
+		"pageShow":true,
+		"pageStyle":'dot',
+		"loop":false,
+		'dotPosition':'center',
+		currentPage:currentFun
+	})
+	
+	
+
+	var pageCount = slide.pageCount();
+	function currentFun(index) {
+		var slideList = document.querySelectorAll(".aui-slide-node");
+		for (var i = 0; i < slideList.length; i++) {
+			if(index == i){
+				var thisDiv = slideList[i].querySelector("div");
+				setTimeout(function(){
+					if(thisDiv.classList.contains("aui-hide")){
+						thisDiv.classList.remove("aui-hide");
+					}
+					thisDiv.querySelector("img").classList.add("fadeInTop");
+					thisDiv.querySelector(".desc").classList.add("fadeInBottom");
+				}, 300)
+
+			}
+		}
+	}
+	console.log(slide.pageCount());
+	function openSlidWin(){
+		api.openSlidLayout({
+            type: 'left',
+            leftEdge: 120,
+            fixedPane: {
+                name: 'fixed',
+                url: 'sidepage.html'
+            },
+            
+            slidPane: {
+                name: 'slide',
+                url: 'mainpage.html'
+            }
+        }, function (ret) {
+
+        });
+	}
+</script>
+</html>

@@ -1,0 +1,61 @@
+html {
+	height: 100%;
+}
+body {
+	background-color: #FFFFFF;
+	height: 100%
+}
+/*条目总体样式*/
+.item {
+	display: table;
+	height: 80dp;
+	width: 100%;
+	border-bottom: 2px solid #FFFFFF;
+}
+.item .itemlogo, .item .itemshelf {
+	display: table-cell;
+	vertical-align: middle;
+}
+.item .itemlogo {
+	width: 60px;
+}
+.item .itemlogo img {
+	margin-top: 10px;
+	margin-left: 20px;
+	width: 40px;
+}
+.item .itemshelf .shelfinfo01 {
+	font-size: 20px;
+	margin-top: 15px;
+	margin: 8px;
+	color: #AFAFAF;
+}
+/*条目特例 */
+.login {
+	color: #A4A4A5;
+	height: 150px;
+	background-size: 80px;
+	background-position: left;
+	margin-left:80px;
+	margin-right:200px;
+	background-repeat: no-repeat ;
+	background-image: url("../../image/sidepage/pic_headphoto_normal.png");
+}
+.logintitle {
+  
+	display:inline-block;
+	margin-top:120px;
+	margin-left: 25px;
+	
+}
+
+.login .itemshelf .shelfinfo01 {
+	font-size: 20px;
+	color: #000000;
+	
+}
+.login .itemshelf .shelfinfo02 {
+	font-size: 14px;
+	margin-top: 5px;
+}
+
