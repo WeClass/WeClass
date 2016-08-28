@@ -32,7 +32,8 @@
 			<ul class="aui-waterfall" id="aui-waterfall">
 				<script id="act-template" type="text/x-dot-template">
 					{{ for(var i=0; i < it.length; i++) { }}
-					<a tapmode="" onclick="openvideoDetail('{{=it[i].id}}');">
+				    <!--<a tapmode="" onclick="openvideoDetail('{{=it[i].id}}','{{=it[i].videopath.url}}');">-->
+					<a tapmode="" onclick="openvideoDetail('{{=it[i].id}}','{{=it[i].videopath.url}}');">
 					<li>
 					<div class="aui-waterfall-header">
 					<img src="{{=it[i].videoimg.url}}" />
@@ -68,8 +69,5 @@
 			padding : 10, //容器内边距
 			space : 10//列间距
 		});
-		
-   
-    
 	</script>
 </html>

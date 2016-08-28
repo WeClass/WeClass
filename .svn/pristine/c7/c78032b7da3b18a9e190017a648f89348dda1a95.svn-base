@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../../css/api.css"/>
+		<link rel="stylesheet" type="text/css" href="../../../css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="../../../css/aui/aui.css" />
+		<style type="text/css">
+			#main {
+				overflow: hidden;
+			}
+			.container {
+				display: -webkit-box;
+				-webkit-box-align: center;
+				-webkit-box-pack: center;
+				-webkit-box-orient: vertical;
+				width: 100%;
+				height: 100%;
+			}
+			.container div {
+				display: -webkit-box;
+				-webkit-box-align: center;
+				-webkit-box-pack: center;
+				width: 100%;
+			}
+			.container div:nth-child(1) {
+				height: 85%;
+			}
+			.container div:nth-child(2) {
+				height: 15%;
+			}
+			.container div:nth-child(2) span {
+				border-width: 4px;
+				border-radius: 4px;
+				border-style: solid;
+				border-color: #FFFFFF;
+				margin: 0 1px;
+			}
+			.currentbtn {
+				border-color: rgb(225, 66, 116) !important;
+			}
+			#courselist {
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+			}
+			.loadmore {
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				font-size: 14px;
+				border-top: 1px solid #e0e0e0;
+				display: none;
+			}
+			.aui-content {
+				background: #ffffff;
+				overflow: hidden;
+				padding: 15px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<div id="courselist"></div>
+			<div class="loadmore">加载更多数据...</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js" ></script>
+	<script type="text/javascript" src="../../../script/common.js" ></script>
+	<script type="text/javascript">
+		var pageIndex = 0;
+		//页数的值
+		var inLoading = false;
+		//判断是否还在加载的标志变量
+		var isReload_ = false;
+		//是否加载数据标志型变量
+		var needLoadMore = false;
+		//加载更多
+		var jsonList = [];
+		//定义一个数组，把数据放进来
+		var totalcount = 0;
+		//总条数
+		var alreadyshow = 0;
+		//已经显示的条数
+		var limitItemNum = 2;
+		//每次出现的最多的item数量
+		var model;
+		var query;
+		apiready = function() {
+			$api.fixStatusBar($api.dom('.header'));
+			//出现沉溺式的效果
+			api.parseTapmode();
+			// 解析tapmode属性，优化点击事件处理,默认页面加载完后，引擎会对dom中的元素进行tapmode属性解析，若是之后创建dom元素，则需要调用该方法后，dom才会生效。
+			/*.append()在DOM元素内部，最后一个子元素后面插入html字符窜
+			 *  append(DOM元素,HTML字符串);
+			 *   返回当前的DOM元素
+			 * */
+			$api.append($api.dom('body'), '<div class="aui-loading"><div class="aui-loading-1"></div><div class="aui-loading-2"></div></div>');
+			model = api.require('model');
+			query = api.require('query');
+			model.config({
+				appId : 'A6902547162870',
+				appKey : '615264D3-EE93-0FB1-FE3E-C3A68799C937',
+				host : 'https://d.apicloud.com'
+			});
+			//下拉到页面底部，添加监听事件加载更多
+			api.addEventListener({
+				name : 'scrolltobottom'//当事件是scrolltobottom，设置距离时触发事件
+			}, function() {
+				var loadmore = $api.dom('.loadmore');
+				//得到dom()标签
+				//如果已经显示的条数小于总的条数
+				if (alreadyshow <= totalcount) {
+					loadmore.style.display = 'block';
+					//显示下面的block
+					show();
+					//显示进度圈
+					loadData(false);
+					//加载更多的数据，每次2条
+				} else {
+					loadmore.style.display = 'none';
+					//否则隐藏下面的
+				}
+			});
+			
+			
+			//下拉刷新
+			pptsetCustomRefreshHeader();
+			getTotalNum();
+			// 获取全部表中全部条目
+			loadData(true);
+		};
+		
+           //下拉刷新
+		   function pptsetCustomRefreshHeader(){
+				    api.setCustomRefreshHeaderInfo({
+				            bgColor : '#f0f0f0',
+				            image : {
+				                pull: 
+				                [
+				                	'widget://image/meituan/pull_end_image_frame_01.png',
+				                	'widget://image/meituan/pull_end_image_frame_02.png',
+				                	'widget://image/meituan/pull_end_image_frame_03.png',
+				                	'widget://image/meituan/pull_end_image_frame_04.png',
+				                	'widget://image/meituan/pull_end_image_frame_05.png'
+				            	],
+				                load : [
+				                	'widget://image/meituan/refreshing_image_frame_01.png',
+				                	'widget://image/meituan/refreshing_image_frame_02.png',
+				                	'widget://image/meituan/refreshing_image_frame_03.png',
+				                	'widget://image/meituan/refreshing_image_frame_04.png',
+				                	'widget://image/meituan/refreshing_image_frame_05.png',
+				                	'widget://image/meituan/refreshing_image_frame_06.png'
+				            	]
+				            }
+				        },function() {
+				           //下拉刷新被触发，自动进入加载状态，使用 api.refreshHeaderLoadDone() 手动结束加载中状态
+				           setTimeout(function(){
+						   loadData(true);
+						   api.refreshHeaderLoadDone();
+				 },3000)
+				});
+				} 
+		
+		// 获取全部表中全部条目
+		function getTotalNum() {
+			query.createQuery(function(ret, err) {
+				if (ret && ret.qid) {
+					var queryId = ret.qid;
+					model.count({
+						class : "homework",
+						qid : queryId
+					}, setAllcount);
+				}
+			});
+		}
+
+		function setAllcount(ret, err) {
+			if (ret) {
+				totalcount = ret.count
+			} else {
+			}
+		}
+
+		//加载更多的数据
+		function loadData(isReload_) {
+			if (inLoading) {//如果还在加载中，不执行操作
+				return;
+			}
+			inLoading = true;
+			if (isReload_) {//下拉刷新，即重新载入,pageIndex为0
+				pageIndex = 0;
+			}
+			query.createQuery(function(ret, err) {
+				if (ret && ret.qid) {
+					var queryId = ret.qid;
+					// 设置limit
+					query.skip({
+						qid : queryId,
+						value : parseInt(alreadyshow) + ''
+					});
+					query.limit({
+						qid : queryId,
+						value : limitItemNum + ''
+					});
+					query.desc({
+						qid : queryId,
+						column : 'createdAt'
+					});
+					model.findAll({
+						class : "homework",
+						qid : queryId
+					}, ajaxBack);
+				}
+			});
+		}
+
+		function ajaxBack(ret, err) {
+			inLoading = false;
+			//如果的到服务器的信息
+			if (ret) {
+				//如果得到的数量大于0
+				if (ret.length > 0) {
+					jsonList = jsonList.concat(ret);
+					var html = createContent();
+					//调用函数显示页面
+					pageIndex++;
+					//页的索引加加
+					alreadyshow += limitItemNum;
+					$api.append($api.byId('courselist'), html);
+					//添加页面信息
+					api.refreshHeaderLoadDone();
+					//刷新完成
+					setTimeout(function() {
+						hide();
+						//调用隐藏进度圈
+					}, 300);
+					//延迟300毫秒
+					api.parseTapmode();
+					// 解析tapmode属性，优化点击事件处理
+					//默认页面加载完后，引擎会对dom中的元素进行tapmode属性解析，若是之后创建dom元素，则需要调用该方法后，dom才会生效。
+				}
+				//如果得到的数量等于0
+				else if (ret.length == 0) {
+					api.refreshHeaderLoadDone();
+					//刷新完成
+					hide();
+					//调用隐藏进度圈
+					if (isReload_) {
+						//如果是刷新
+						var html = '<div class="nodata">暂无信息</div>';
+						$api.html($api.byId('courselist'), html);
+					}
+				}
+				if (pageIndex < ret.pages) {
+					needLoadMore = true;
+				} else {
+					needLoadMore = true;
+				}
+			}
+			//未得到信息
+			else {
+				api.refreshHeaderLoadDone();
+				//刷新完成
+				hide();
+				//调用隐藏进度圈
+				if (ret) {
+					api.toast({
+						msg : ret.msg,
+						location : 'top'
+					});
+				} else if (err) {
+					api.toast({
+						msg : err.msg,
+						location : 'top'
+					});
+				} else {
+					api.toast({
+						msg : '数据错误',
+						location : 'top'
+					});
+				}
+			}
+		}
+
+		//拼接html页面
+		function createContent() {
+			var html = '';
+			for (var i = alreadyshow; i < jsonList.length; i++) {
+				var swM = jsonList[i].content;
+				//alert(jsonList[i].id);
+				if (swM) {
+					swM = jsonList[i].content
+				} else {
+					swM = "暂无数据"
+				}
+				html += '<div class="aui-content">';
+				html += '<ul class="aui-timeline">';
+				html += '<li class="aui-time-label">';
+				html += '<span class="aui-bg-info">' + jsonList[i].yearmonth + '</span>';
+				html += '</li>';
+				//特别注意需要转义
+				html += '<li id="myBtn" onclick="openworkDetail(\'' + jsonList[i].id + '\',\'' + jsonList[i].homeworkcontent.url + '\')"    >';
+				//html += '<div class="aui-time-label aui-bg-info">已读</div>';
+				html += '<i class="aui-iconfont aui-icon-home aui-bg-warning"></i>';
+				html += '<div class="aui-timeline-item">';
+				html += '<span class="aui-timeline-time">';
+				html += '<i class="aui-iconfont aui-icon-time"></i>' + jsonList[i].time + '</span>';
+				html += '<h3 class="aui-timeline-header">' + jsonList[i].homeworkname + '</h3>';
+				html += '<div class="aui-timeline-body">主要内容：' + jsonList[i].content + '</div>';
+				html += '<div class="aui-timeline-footer">上传人： ' + jsonList[i].people + '</div>';
+				html += '</div>';
+				html += '</li>';
+				html += '</ul>';
+				html += '</div>';
+			}
+			return html;
+		}
+
+		//每一项的监听
+		function openworkDetail(did, url) {
+			//下载作业
+			downwork(url);
+		}
+
+		//下载作业
+		function downwork(url) {
+	
+			//开始一个下载
+			var manager = api.require('downloadManager');
+			manager.enqueue({
+				url : url, //资源地址，不能为空
+				savePath : 'fs://' + url, //存储路径，为空时使用自动创建的路径
+				cache : true, //是否使用缓存
+				allowResume : true, //是否开启断点续传，需要服务器支持
+				uncompress : false,
+				mimeType : '/docx',
+				title : 'docx', //展示在managerView列表中的文件标题
+				networkTypes : 'all'//允许自动下载的网络环境，参考网络环境常量
+			}, function(ret, err) {
+				if (ret.id) {
+					docReader(url);
+				} else {
+					alert("正在下载，请耐心等待！");
+				}
+			});
+		}
+
+		//打开ppt
+		function docReader(url) {
+			var obj = api.require('docReader');
+			obj.open({
+				path : 'fs://' + url,
+			}, function(ret, err) {
+				if (ret.status) {
+					alert("正在完成！");
+				} else {
+					alert("正在下载，请耐心等待！");
+				}
+			});
+		}
+
+		//得到数据则关闭加载的进度
+		function hide() {
+			$api.remove($api.dom('.aui-loading'));
+		}
+
+		//得到数据则加载的进度
+		function show() {
+			var loading = $api.dom(".aui-loading");
+			if (!loading) {
+				$api.append($api.dom('body'), '<div class="aui-loading"><div class="aui-loading-1"></div><div class="aui-loading-2"></div></div>');
+			}
+		}
+	</script>
+</html>

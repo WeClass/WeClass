@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>关于我们</title>
+    <link href="../../../css/Hui.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+    </style>
+</head>
+<body>
+    <div class="H-timeline H-padding-horizontal-both-10 H-border-horizontal-right-after">
+       
+         <!--每条记录01-->
+        <script id="act-template" type="text/x-dot-template">
+		{{ for(var i =0; i < it.length; i++) { }} 
+        <div class="H-timeline-item H-z-index-100 H-theme-background-color-white H-margin-vertical-top-15 H-border-both-after H-animate-scale-big">
+            <div class="H-timeline-dotline H-position-absolute H-z-index-1000">
+                <div class="H-timeline-dot H-position-absolute H-z-index-1000 H-border-radius-circle"></div>
+                <div class="H-timeline-line H-position-absolute H-z-index-1000"></div>
+                <div class="H-timeline-bigdot H-center-all H-border-radius-circle H-position-absolute H-z-index-100000 H-theme-background-color-white">
+                    <div class="H-timeline-bigdot-child H-border-radius-circle"></div>
+                </div>
+                <div class="H-timeline-dot H-position-absolute H-z-index-1000 H-border-radius-circle"></div>
+            </div>
+            <div class="H-timeline-header H-text-show-row-1 H-theme-font-color1 H-font-size-14 H-padding-10 H-line-height-normal H-theme-background-color-white H-border-vertical-bottom-after">
+             {{=it[i].aboutmeversion}}
+            </div>
+            <div class="H-timeline-container H-padding-10 H-font-size-15">
+             {{=it[i].aboutmecontent}}
+            </div>
+            <div class="H-timeline-footer H-line-height-normal H-padding-10 H-font-size-14">{{=it[i].aboutmetime}}</div>
+        </div>
+        {{  }}}
+        </script>
+		<div id="act-content"></div>
+      <!--每条记录-->
+      
+    </div>
+    <div class="H-padding-vertical-bottom-10"></div>
+    <script type="text/javascript" src="../../../script/api.js"></script>
+    <script type="text/javascript" src="../../../script/doT.min.js"></script>
+    <script type="text/javascript" src="../../../script/hui/H.js" ></script>
+    <script type="text/javascript" src="../../../script/common.js"></script>
+    <script type="text/javascript" src="../../../script/aboutme/aboutme.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../css/homepage/mainpage.css" />
+    <link rel="stylesheet" type="text/css" href="../css/aui/aui-win.css" />
+</head>
+<body>
+     <header class="aui-bar aui-bar-nav " id="aui-header">
+        <a class="aui-btn  aui-pull-left">
+            <span class="aui-iconfont aui-icon-sort" onclick="sliding()"></span>
+        </a>
+        <div class="aui-title">首页</div>
+    </header>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+ apiready = function(){
+        api.parseTapmode();
+        api.addEventListener({
+		name : 'keyback'
+	    }, function(ret, err) {
+		api.closeWidget();
+	    });
+        var header = $api.byId('aui-header');
+        $api.fixStatusBar(header); 
+        var headerPos = $api.offset(header);
+        var body_h = $api.offset($api.dom('body')).h;
+        api.openFrame({
+            name:'mainpage_frm',
+            url: 'mainpage_frm.html',
+            bounces: false,//（可选项）页面是否弹动
+            rect: {
+                x: 0,
+                y: headerPos.h,
+                w: headerPos.w,
+                h: 'auto'
+            }
+        });
+    };
+ //侧滑监听
+function sliding() {
+	api.openSlidPane({
+		type : 'left'
+	});
+}
+function closeWin(){
+        api.closeWin();
+    }  
+</script>
+</html>
